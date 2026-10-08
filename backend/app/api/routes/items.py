@@ -15,7 +15,6 @@ def read_items(
     session: SessionDep, current_user: CurrentUser, skip: int = 0, limit: int = 100
 ) -> Any:
     """Retrieve items."""
-
     if current_user.is_superuser:
         count_statement = select(func.count()).select_from(Item)
         count = session.exec(count_statement).one()
@@ -45,9 +44,7 @@ def read_items(
 
 @router.get("/{id}", response_model=ItemPublic)
 def read_item(session: SessionDep, current_user: CurrentUser, id: uuid.UUID) -> Any:
-    """
-    Get item by ID.
-    """
+    """Get item by ID."""
     item = session.get(Item, id)
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
