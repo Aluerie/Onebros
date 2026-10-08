@@ -80,3 +80,11 @@ error-on-warning = true
 
 [tool.fastapi]
 entrypoint = "app.main:app"
+
+# Non-template
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
