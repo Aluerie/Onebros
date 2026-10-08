@@ -6,6 +6,7 @@ from sqlmodel import Field, Relationship, SQLModel
 
 
 def get_datetime_utc() -> datetime:
+    """Get aware datetime utc now."""
     return datetime.now(UTC)
 
 
