@@ -14,9 +14,7 @@ router = APIRouter(prefix="/items", tags=["items"])
 def read_items(
     session: SessionDep, current_user: CurrentUser, skip: int = 0, limit: int = 100
 ) -> Any:
-    """
-    Retrieve items.
-    """
+    """Retrieve items."""
 
     if current_user.is_superuser:
         count_statement = select(func.count()).select_from(Item)
