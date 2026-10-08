@@ -57,9 +57,7 @@ def read_item(session: SessionDep, current_user: CurrentUser, id: uuid.UUID) -> 
 def create_item(
     *, session: SessionDep, current_user: CurrentUser, item_in: ItemCreate
 ) -> Any:
-    """
-    Create new item.
-    """
+    """Create new item."""
     item = Item.model_validate(item_in, update={"owner_id": current_user.id})
     session.add(item)
     session.commit()
@@ -75,9 +73,7 @@ def update_item(
     id: uuid.UUID,
     item_in: ItemUpdate,
 ) -> Any:
-    """
-    Update an item.
-    """
+    """Update an item."""
     item = session.get(Item, id)
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
