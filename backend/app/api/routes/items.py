@@ -91,9 +91,7 @@ def update_item(
 def delete_item(
     session: SessionDep, current_user: CurrentUser, id: uuid.UUID
 ) -> Message:
-    """
-    Delete an item.
-    """
+    """Delete an item."""
     item = session.get(Item, id)
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
