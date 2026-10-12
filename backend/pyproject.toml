@@ -38,6 +38,8 @@ strict = true
 exclude = ["venv", ".venv", "alembic"]
 
 [tool.ruff]
+preview = true
+line-length = 125
 target-version = "py314"
 exclude = ["alembic"]
 
