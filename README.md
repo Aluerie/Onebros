@@ -1,4 +1,6 @@
-# Full Stack FastAPI Template
+# 🙃 Onebros website
+
+## Generated from Full Stack FastAPI Template
 
 [![Test Docker Compose](../../actions/workflows/test-docker-compose.yml/badge.svg)](../../actions/workflows/test-docker-compose.yml)
 [![Test Backend](../../actions/workflows/test-backend.yml/badge.svg)](../../actions/workflows/test-backend.yml)
