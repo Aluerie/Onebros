@@ -67,10 +67,7 @@ class Settings(BaseSettings):
 
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
-            message = (
-                f'The value of {var_name} is "changethis", '
-                "for security, please change it, at least for deployments."
-            )
+            message = f'The value of {var_name} is "changethis", for security, please change it, at least for deployments.'
             if self.FASTAPI_ENV == "development":
                 warnings.warn(message, stacklevel=1)
             else:
@@ -81,11 +78,9 @@ class Settings(BaseSettings):
         self._check_default_secret("SECRET_KEY", self.SECRET_KEY)
         for host in self.DATABASE_URL.hosts():
             self._check_default_secret("DATABASE_URL password", host["password"])
-        self._check_default_secret(
-            "FIRST_SUPERUSER_PASSWORD", self.FIRST_SUPERUSER_PASSWORD
-        )
+        self._check_default_secret("FIRST_SUPERUSER_PASSWORD", self.FIRST_SUPERUSER_PASSWORD)
 
         return self
 
 
-settings = Settings()  # type: ignore # ty: ignore[unused-ignore-comment]
+settings = Settings()

@@ -33,9 +33,11 @@ dev = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+
 [tool.mypy]
 strict = true
 exclude = ["venv", ".venv", "alembic"]
+
 
 [tool.ruff]
 preview = true
@@ -45,16 +47,43 @@ exclude = ["alembic"]
 
 [tool.ruff.lint]
 select = ["ALL"]
-# ignore = [
-#     "E501",  # line too long, handled by black
-#     "B008",  # do not perform function calls in argument defaults
-#     "W191",  # indentation contains tabs
-#     "B904",  # Allow raising exceptions without from e, for HTTPException
-# ]
+ignore = [
+    # Recommended to disable by https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
+    "tab-indentation",
+    "indentation-with-invalid-multiple",
+    "indentation-with-invalid-multiple-comment",
+    "over-indented",
+    "incorrect-blank-line-before-class",
+    "docstring-tab-indentation",
+    "triple-single-quotes",
+    "bad-quotes-inline-string",
+    "bad-quotes-multiline-string",
+    "bad-quotes-docstring",
+    "avoidable-escaped-quote",
+    "unnecessary-escaped-quote",
+    "missing-trailing-comma",
+    "prohibited-trailing-comma",
+    "multi-line-implicit-string-concatenation",
+    # Docstring related
+    "D",
+    "DOC",
+    "CPY",
+    # Other (uncategorized) Rules
+    "any-type",
+    "assert",
+    "builtin-argument-shadowing",
+    "commented-out-code",
+    "raise-without-from-inside-except",
+    "typing-only-first-party-import",
+    "typing-only-standard-library-import",
+    "typing-only-third-party-import",
+]
+unfixable = ["commented-out-code"]
 
 [tool.ruff.lint.pyupgrade]
 # Preserve types, even if a file imports `from __future__ import annotations`.
 keep-runtime-typing = true
+
 
 [tool.coverage.run]
 source = ["app"]
@@ -67,8 +96,17 @@ sort = "-Cover"
 [tool.coverage.html]
 show_contexts = true
 
+
+[tool.ty.rules]
+all = "error"
+possibly-missing-import = "ignore"
+unsound-assignment = "ignore"
+unsound-return-statement = "ignore"
+unsound-yield = "ignore"
+
 [tool.ty.terminal]
 error-on-warning = true
+
 
 [tool.fastapi]
 entrypoint = "app.main:app"
